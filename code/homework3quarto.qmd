@@ -1,7 +1,12 @@
 ---
 title: "Homework 3"
-format: pdf
-editor: visual
+editor: source
+format:
+  html:
+    toc: true # use this to display a table of contents
+execute:
+  message: false # use this to make sure messages don't show up
+  warning: false # use this to make sure warnings don't show up
 ---
 
 # Repository Link
@@ -25,3 +30,10 @@ library("readxl")
 ## a.
 
 [To summarize my data I could compare the mean number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that I will climb more floors on non school days.]
+
+## b.
+
+```{r}
+personaldata <- read_csv(here("data", "personaldata.csv")) |> clean_names()
+```
+
