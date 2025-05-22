@@ -1,0 +1,21 @@
+---
+title: "Homework 3"
+format: pdf
+editor: visual
+---
+
+# Repository Link
+
+[https://github.com/eckdogg/ENVS-193DS_homework-03.git]
+
+
+# Set up
+
+```{r}
+library("tidyverse")
+library("here")
+library("gt")
+library("janitor")
+library("readxl")
+```
+
