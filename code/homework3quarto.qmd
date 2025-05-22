@@ -19,3 +19,9 @@ library("janitor")
 library("readxl")
 ```
 
+
+# Problem 1. Personal data
+
+## a.
+
+[To summarize my data I could compare the mean number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that I will climb more floors on non school days.]
