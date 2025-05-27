@@ -117,5 +117,16 @@ personaldatasummary %>%
 
 ## a.
 
-[The statistical tests the authors are using to address their main research question are a linear mixed model and t-test.]
+[The statistical tests the authors are using to address their main research question are a linear mixed effect model and t-test.]
+
 ![Figure](homework3figure.JPG)
+
+## b.
+
+[The authors somewhat clearly visually represented their statistics in figures. The y-axis is in a logical position but the x-axis is not because it is not incremental. Standard error bars are shown on the bar graph but the underlying data is not shown.]
+
+## c.
+
+
+
+
