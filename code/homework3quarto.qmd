@@ -19,7 +19,7 @@ execute:
 # Set up
 
 ```{r}
-library("tidyverse")
+library("tidyverse") # reading in packages
 library("here")
 library("gt")
 library("janitor")
@@ -37,11 +37,11 @@ library("ggplot2")
 ## b.
 
 ```{r}
-personaldata <- read_csv(here("data", "personaldata.csv")) 
-personaldata_clean <- personaldata |> clean_names()
+personaldata <- read_csv(here("data", "personaldata.csv")) # creating an object called "personaldata" from my csv
+personaldata_clean <- personaldata |> clean_names() # cleaning up the variable names
 personaldatasummary <- personaldata_clean |> 
 group_by(school_day) |> 
-summarize(mean = mean(floors_climbed))
+summarize(mean = mean(floors_climbed)) # taking the mean floors climbed based on type of day
 
 ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
        aes(x = school_day, # x-axis should be type of day
@@ -52,8 +52,8 @@ ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
               height = 0) + # making sure points don't jitter vertically
   labs(x = "School Day", # labelling the x-axis
        y = "Floors Climbed") + # labelling the y-axis
-   scale_color_manual(values = c("Yes" = "deepskyblue2", "No" = "deeppink2"))  + # removes the legend
-  theme(legend.position = "none")
+   scale_color_manual(values = c("Yes" = "deepskyblue2", "No" = "deeppink2"))  + # manually setting colors
+  theme(legend.position = "none") # removes the legend
 ```
 
 ## c.
@@ -68,28 +68,28 @@ ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
               height = 0) + # making sure points don't jitter vertically
   labs(x = "School Day", # labelling the x-axis
        y = "Floors Climbed", # labelling the y-axis
-       caption = "Floors Climbed on School Days vs. Non School Days") + 
-   scale_color_manual(values = c("Yes" = "deepskyblue2", "No" = "deeppink2"))  + # removes the legend
-  theme(legend.position = "none")
+       caption = "Floors Climbed on School Days vs. Non School Days") + # adding caption
+   scale_color_manual(values = c("Yes" = "deepskyblue2", "No" = "deeppink2"))  + # manually setting colors
+  theme(legend.position = "none") # removes the legend
 ```
 
 ## d.
 
 ```{r}
-library(gt)
+library(gt) # Using gt package
 
-personaldatasummary %>%
-  gt() %>%
-  tab_header(
-    title = "Personal Data Summary"
+personaldatasummary %>% # Using personaldatasummary data frame
+  gt() %>% # gt function for table
+  tab_header( # Adding a table header
+    title = "Personal Data Summary" # Adding a title
   ) %>%
-  fmt_number(
-    columns = where(is.numeric),
-    decimals = 2
+  fmt_number( 
+    columns = where(is.numeric), # Formatting numerical columns
+    decimals = 2 # Rounding numbers to 2 decimal places
   ) %>%
-  cols_label(
-    school_day = "School Day",
-    mean = "Mean # of Floors Climbed"
+  cols_label( # Renaming columns
+    school_day = "School Day", # Renaming school_day column
+    mean = "Mean # of Floors Climbed" # Renaming mean column
   )
 ```
 
