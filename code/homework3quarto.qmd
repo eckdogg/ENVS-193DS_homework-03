@@ -102,4 +102,4 @@ personaldatasummary %>%
 
 ## b.
 
-![Sketch](homework3sketch.JPEG)
+![Sketch]("C:\Users\owene\Downloads\homework3sketch.JPEG")
