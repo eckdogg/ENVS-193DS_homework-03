@@ -102,4 +102,8 @@ personaldatasummary %>%
 
 ## b.
 
-![Sketch](../images/homework3sketch.JPEG)
+![Sketch](homework3sketch.JPEG)
+
+## c.
+
+![Draft](homework3draft.JPEG)
