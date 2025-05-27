@@ -118,4 +118,4 @@ personaldatasummary %>%
 ## a.
 
 [The statistical tests the authors are using to address their main research question are a linear mixed model and t-test.]
-![Figure](homework3figure.JPEG)
+![Figure](homework3figure.JPG)
