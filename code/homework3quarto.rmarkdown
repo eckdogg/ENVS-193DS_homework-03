@@ -11,12 +11,16 @@ execute:
   warning: false # use this to make sure warnings don't show up
 ---
 
+
+
 # Repository Link
 
 [https://github.com/eckdogg/ENVS-193DS_homework-03.git]
 
 
 # Set up
+
+
 
 ```{r}
 library("tidyverse")
@@ -28,6 +32,8 @@ library("ggplot2")
 ```
 
 
+
+
 # Problem 1. Personal data
 
 ## a.
@@ -35,6 +41,8 @@ library("ggplot2")
 [To summarize my data I could compare the mean number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that I will climb more floors on non school days.]
 
 ## b.
+
+
 
 ```{r}
 personaldata <- read_csv(here("data", "personaldata.csv")) 
@@ -56,7 +64,11 @@ ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
   theme(legend.position = "none")
 ```
 
+
+
 ## c.
+
+
 
 ```{r}
 ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
@@ -73,7 +85,11 @@ ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
   theme(legend.position = "none")
 ```
 
+
+
 ## d.
+
+
 
 ```{r}
 library(gt)
@@ -94,6 +110,8 @@ personaldatasummary %>%
 ```
 
 
+
+
 # Problem 2.
 
 ## a.
@@ -103,3 +121,4 @@ personaldatasummary %>%
 ## b.
 
 ![Sketch](../images/homework3sketch.JPEG)
+
