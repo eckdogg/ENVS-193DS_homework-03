@@ -100,6 +100,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#problem-3." id="toc-problem-3." class="nav-link" data-scroll-target="#problem-3.">Problem 3.</a>
   <ul class="collapse">
   <li><a href="#a.-2" id="toc-a.-2" class="nav-link" data-scroll-target="#a.-2">a.</a></li>
+  <li><a href="#b.-2" id="toc-b.-2" class="nav-link" data-scroll-target="#b.-2">b.</a></li>
+  <li><a href="#c.-2" id="toc-c.-2" class="nav-link" data-scroll-target="#c.-2">c.</a></li>
+  <li><a href="#d.-2" id="toc-d.-2" class="nav-link" data-scroll-target="#d.-2">d.</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -144,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="set-up" class="level1">
 <h1>Set up</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>) <span class="co"># reading in packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"here"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"gt"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"janitor"</span>)</span>
@@ -161,11 +164,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="b." class="level2">
 <h2 class="anchored" data-anchor-id="b.">b.</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"personaldata.csv"</span>)) </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>personaldata_clean <span class="ot">&lt;-</span> personaldata <span class="sc">|&gt;</span> <span class="fu">clean_names</span>()</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"personaldata.csv"</span>)) <span class="co"># creating an object called "personaldata" from my csv</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>personaldata_clean <span class="ot">&lt;-</span> personaldata <span class="sc">|&gt;</span> <span class="fu">clean_names</span>() <span class="co"># cleaning up the variable names</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="ot">&lt;-</span> personaldata_clean <span class="sc">|&gt;</span> </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(school_day) <span class="sc">|&gt;</span> </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(floors_climbed))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(floors_climbed)) <span class="co"># taking the mean floors climbed based on type of day</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> personaldata_clean, <span class="co"># start with the personaldata_clean data frame</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> school_day, <span class="co"># x-axis should be type of day</span></span>
@@ -176,8 +179,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span> <span class="co"># making sure points don't jitter vertically</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"School Day"</span>, <span class="co"># labelling the x-axis</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Floors Climbed"</span>) <span class="sc">+</span> <span class="co"># labelling the y-axis</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"deepskyblue2"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"deeppink2"</span>))  <span class="sc">+</span> <span class="co"># removes the legend</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"deepskyblue2"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"deeppink2"</span>))  <span class="sc">+</span> <span class="co"># manually setting colors</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="co"># removes the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -199,9 +202,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span> <span class="co"># making sure points don't jitter vertically</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"School Day"</span>, <span class="co"># labelling the x-axis</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Floors Climbed"</span>, <span class="co"># labelling the y-axis</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Floors Climbed on School Days vs. Non School Days"</span>) <span class="sc">+</span> </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"deepskyblue2"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"deeppink2"</span>))  <span class="sc">+</span> <span class="co"># removes the legend</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Floors Climbed on School Days vs. Non School Days"</span>) <span class="sc">+</span> <span class="co"># adding caption</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"deepskyblue2"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"deeppink2"</span>))  <span class="sc">+</span> <span class="co"># manually setting colors</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="co"># removes the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -214,39 +217,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="d." class="level2">
 <h2 class="anchored" data-anchor-id="d.">d.</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt) <span class="co"># Using gt package</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Personal Data Summary"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="sc">%&gt;%</span> <span class="co"># Using personaldatasummary data frame</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> <span class="co"># gt function for table</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>( <span class="co"># Adding a table header</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Personal Data Summary"</span> <span class="co"># Adding a title</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">where</span>(is.numeric),</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>( </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">where</span>(is.numeric), <span class="co"># Formatting numerical columns</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span> <span class="co"># Rounding numbers to 2 decimal places</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">school_day =</span> <span class="st">"School Day"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="st">"Mean # of Floors Climbed"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>( <span class="co"># Renaming columns</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">school_day =</span> <span class="st">"School Day"</span>, <span class="co"># Renaming school_day column</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="st">"Mean Floors Climbed"</span> <span class="co"># Renaming mean column</span></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="qvkabubrzk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qvkabubrzk table {
+<div id="ufqrdpqprd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ufqrdpqprd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qvkabubrzk thead, #qvkabubrzk tbody, #qvkabubrzk tfoot, #qvkabubrzk tr, #qvkabubrzk td, #qvkabubrzk th {
+#ufqrdpqprd thead, #ufqrdpqprd tbody, #ufqrdpqprd tfoot, #ufqrdpqprd tr, #ufqrdpqprd td, #ufqrdpqprd th {
   border-style: none;
 }
 
-#qvkabubrzk p {
+#ufqrdpqprd p {
   margin: 0;
   padding: 0;
 }
 
-#qvkabubrzk .gt_table {
+#ufqrdpqprd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -272,12 +275,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_caption {
+#ufqrdpqprd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qvkabubrzk .gt_title {
+#ufqrdpqprd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -289,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#qvkabubrzk .gt_subtitle {
+#ufqrdpqprd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -301,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#qvkabubrzk .gt_heading {
+#ufqrdpqprd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -313,13 +316,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_bottom_border {
+#ufqrdpqprd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_col_headings {
+#ufqrdpqprd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -334,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_col_heading {
+#ufqrdpqprd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -354,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#qvkabubrzk .gt_column_spanner_outer {
+#ufqrdpqprd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -366,15 +369,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#qvkabubrzk .gt_column_spanner_outer:first-child {
+#ufqrdpqprd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qvkabubrzk .gt_column_spanner_outer:last-child {
+#ufqrdpqprd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qvkabubrzk .gt_column_spanner {
+#ufqrdpqprd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -386,11 +389,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#qvkabubrzk .gt_spanner_row {
+#ufqrdpqprd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qvkabubrzk .gt_group_heading {
+#ufqrdpqprd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -416,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#qvkabubrzk .gt_empty_group_heading {
+#ufqrdpqprd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -431,15 +434,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#qvkabubrzk .gt_from_md > :first-child {
+#ufqrdpqprd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qvkabubrzk .gt_from_md > :last-child {
+#ufqrdpqprd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qvkabubrzk .gt_row {
+#ufqrdpqprd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -458,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#qvkabubrzk .gt_stub {
+#ufqrdpqprd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -471,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qvkabubrzk .gt_stub_row_group {
+#ufqrdpqprd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -485,15 +488,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#qvkabubrzk .gt_row_group_first td {
+#ufqrdpqprd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qvkabubrzk .gt_row_group_first th {
+#ufqrdpqprd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qvkabubrzk .gt_summary_row {
+#ufqrdpqprd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -503,16 +506,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qvkabubrzk .gt_first_summary_row {
+#ufqrdpqprd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_first_summary_row.thick {
+#ufqrdpqprd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qvkabubrzk .gt_last_summary_row {
+#ufqrdpqprd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -522,7 +525,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_grand_summary_row {
+#ufqrdpqprd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -532,7 +535,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qvkabubrzk .gt_first_grand_summary_row {
+#ufqrdpqprd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -542,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_last_grand_summary_row_top {
+#ufqrdpqprd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -552,11 +555,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_striped {
+#ufqrdpqprd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qvkabubrzk .gt_table_body {
+#ufqrdpqprd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -565,7 +568,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_footnotes {
+#ufqrdpqprd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -579,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_footnote {
+#ufqrdpqprd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -588,7 +591,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qvkabubrzk .gt_sourcenotes {
+#ufqrdpqprd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -602,7 +605,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qvkabubrzk .gt_sourcenote {
+#ufqrdpqprd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -610,72 +613,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qvkabubrzk .gt_left {
+#ufqrdpqprd .gt_left {
   text-align: left;
 }
 
-#qvkabubrzk .gt_center {
+#ufqrdpqprd .gt_center {
   text-align: center;
 }
 
-#qvkabubrzk .gt_right {
+#ufqrdpqprd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qvkabubrzk .gt_font_normal {
+#ufqrdpqprd .gt_font_normal {
   font-weight: normal;
 }
 
-#qvkabubrzk .gt_font_bold {
+#ufqrdpqprd .gt_font_bold {
   font-weight: bold;
 }
 
-#qvkabubrzk .gt_font_italic {
+#ufqrdpqprd .gt_font_italic {
   font-style: italic;
 }
 
-#qvkabubrzk .gt_super {
+#ufqrdpqprd .gt_super {
   font-size: 65%;
 }
 
-#qvkabubrzk .gt_footnote_marks {
+#ufqrdpqprd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qvkabubrzk .gt_asterisk {
+#ufqrdpqprd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qvkabubrzk .gt_indent_1 {
+#ufqrdpqprd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qvkabubrzk .gt_indent_2 {
+#ufqrdpqprd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qvkabubrzk .gt_indent_3 {
+#ufqrdpqprd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qvkabubrzk .gt_indent_4 {
+#ufqrdpqprd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qvkabubrzk .gt_indent_5 {
+#ufqrdpqprd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qvkabubrzk .katex-display {
+#ufqrdpqprd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qvkabubrzk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ufqrdpqprd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -687,7 +690,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd gt_col_headings">
 <th id="school_day" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">School Day</th>
-<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean # of Floors Climbed</th>
+<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean Floors Climbed</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -747,6 +750,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Figure</figcaption>
 </figure>
 </div>
+</section>
+<section id="b.-2" class="level2">
+<h2 class="anchored" data-anchor-id="b.-2">b.</h2>
+<p>[The authors somewhat clearly visually represented their statistics in figures. The y-axis is in a logical position but the x-axis is not because it is not incremental. Standard error bars are shown on the bar graph but the underlying data is not shown.]</p>
+</section>
+<section id="c.-2" class="level2">
+<h2 class="anchored" data-anchor-id="c.-2">c.</h2>
+<p>[The authors handled “visual clutter” well. The data:ink ratio is somewhat high. There is an adequate amount of data shown without too many visuals.]</p>
+</section>
+<section id="d.-2" class="level2">
+<h2 class="anchored" data-anchor-id="d.-2">d.</h2>
+<p>[The most important recommendation I have is to make the x-axis in incremental order. The current order is not logical. I would start with the lowest urban percentage and work up to the highest percentage, with the control at the end. I would also make the value colors more differentiated from each other because they are currently two shades of gray. These recommendations would make the graph more aesthetic and easier to read.]</p>
 </section>
 </section>
 

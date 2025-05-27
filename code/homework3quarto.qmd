@@ -89,7 +89,7 @@ personaldatasummary %>% # Using personaldatasummary data frame
   ) %>%
   cols_label( # Renaming columns
     school_day = "School Day", # Renaming school_day column
-    mean = "Mean # of Floors Climbed" # Renaming mean column
+    mean = "Mean Floors Climbed" # Renaming mean column
   )
 ```
 
