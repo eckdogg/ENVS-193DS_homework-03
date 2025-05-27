@@ -71,4 +71,29 @@ ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
   theme(legend.position = "none")
 ```
 
+## d.
+
+```{r}
+# Example: structure of personaldatasummary
+# personaldatasummary <- data.frame(
+#   Variable = c("Height", "Weight", "PM2.5"),
+#   Mean = c(170.5, 65.2, 12.4)
+# )
+
+library(gt)
+
+personaldatasummary %>%
+  gt() %>%
+  tab_header(
+    title = "Personal Data Summary"
+  ) %>%
+  fmt_number(
+    columns = where(is.numeric),
+    decimals = 2
+  ) %>%
+  cols_label(
+    school_day = "School Day",
+    mean = "Mean # of Floors Climbed"
+  )
+```
 
