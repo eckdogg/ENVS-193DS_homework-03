@@ -102,4 +102,4 @@ personaldatasummary %>%
 
 ## b.
 
-![Sketch](C:\Users\owene\Downloads\ENVS-193DS\github\ENVS-193DS_homework-03\images\homework3sketch.JPEG)
+![Sketch](C:/Users/owene/Downloads/ENVS-193DS/github/ENVS-193DS_homework-03/images/homework3sketch.JPEG)
