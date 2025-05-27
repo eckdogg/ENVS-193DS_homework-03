@@ -30,7 +30,7 @@ library("ggplot2")
 
 ## a.
 
-[To summarize my data I could compare the mean number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that I will climb more floors on non school days.]
+[To summarize my data I could compare the number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that I will climb more floors on non school days.]
 
 ## b.
 
@@ -51,5 +51,21 @@ ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
   theme(legend.position = "none")
 ```
 
+## c.
+
+```{r}
+ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
+       aes(x = school_day, # x-axis should be type of day
+           y = floors_climbed, # y-axis should be number of floors climbed 
+           color = school_day)) + # coloring by type of day
+  geom_boxplot() + # first layer should be a boxplot
+  geom_jitter(width = 0.2, # making the points jitter horizontally
+              height = 0) + # making sure points don't jitter vertically
+  labs(x = "School Day", # labelling the x-axis
+       y = "Floors Climbed", # labelling the y-axis
+       caption = "Floors Climbed on School Days vs. Non School Days") + 
+   scale_color_manual(values = c("Yes" = "deepskyblue2", "No" = "deeppink2"))  + # removes the legend
+  theme(legend.position = "none")
+```
 
 
