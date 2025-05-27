@@ -119,7 +119,7 @@ personaldatasummary %>% # Using personaldatasummary data frame
 
 [The statistical tests the authors are using to address their main research question are a linear mixed effect model and t-test.]
 
-![Figure](code/homework3figure.jpeg)
+![Figure](homework3figure.jpeg)
 
 ## b.
 
