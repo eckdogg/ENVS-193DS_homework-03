@@ -10,17 +10,17 @@ File structure:
 
 ```
 .
-├── ENVS-193DS_homework-03.Rproj
-├── README.md
-├── README.html
+├── ENVS-193DS_homework-03.Rproj    # Rstudio project file
+├── README.md                       # README file explaining project
+├── README.html                     # Rendered version of README
 ├── .gitignore
-├── code     # code folder
-│   ├── homework3quarto_files               
-│   ├── homework3quarto.html
-│   ├── homework3quarto.qmd
-│   ├── homework3draft.JPEG
-│   ├── homework3sketch.JPEG
-│   ├── homework3figure.jpeg
+├── code                            # code folder
+│   ├── homework3quarto_files       # Additional Quarto files        
+│   ├── homework3quarto.html        # Rendered Quarto document
+│   ├── homework3quarto.qmd         # Homework 3 Quarto document
+│   ├── homework3draft.JPEG         # Image of draft for question 2c
+│   ├── homework3sketch.JPEG        # Image of sketch for question 2b
+│   ├── homework3figure.jpeg        # Image of figure for question 3a
 └── data                            # data folder
     └── personaldata.csv            # csv file containing my personal data
 ```
