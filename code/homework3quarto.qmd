@@ -98,4 +98,4 @@ personaldatasummary %>%
 
 ## a.
 
-[For an affective visualization]
+[My personal data compared the amount of floors I climbed on school days compared to non school days. The the boxplot for non school days was significantly higher than the boxplot for school days. This represents the fact that I climb significantly more floors on non school days than school days. For an affective visualization I could represent the boxplots with something like buildings or mountains, where one is taller than the other.]
