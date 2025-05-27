@@ -107,3 +107,7 @@ personaldatasummary %>%
 ## c.
 
 ![Draft](homework3draft.JPEG)
+
+## d.
+
+[In this piece I am depicting the boxplots of my personal data as buildings. This is to represent the difference in floors climbed on school days compared to non school days. I was influenced by Jill Pelto's paintings where she creates art around a graph. My work takes the form of a drawing. I created it in GoodNotes using the pencil tool.]
