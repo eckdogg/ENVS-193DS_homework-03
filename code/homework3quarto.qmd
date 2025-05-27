@@ -1,5 +1,7 @@
 ---
 title: "Homework 3"
+author: Owen Eckweiler
+date: 5/27/2025
 editor: source
 format:
   html:
@@ -74,12 +76,6 @@ ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
 ## d.
 
 ```{r}
-# Example: structure of personaldatasummary
-# personaldatasummary <- data.frame(
-#   Variable = c("Height", "Weight", "PM2.5"),
-#   Mean = c(170.5, 65.2, 12.4)
-# )
-
 library(gt)
 
 personaldatasummary %>%
@@ -97,3 +93,9 @@ personaldatasummary %>%
   )
 ```
 
+
+# Problem 2.
+
+## a.
+
+[For an affective visualization]
