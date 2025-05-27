@@ -30,13 +30,16 @@ library("ggplot2")
 
 ## a.
 
-[To summarize my data I could compare the number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that I will climb more floors on non school days.]
+[To summarize my data I could compare the mean number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that I will climb more floors on non school days.]
 
 ## b.
 
 ```{r}
 personaldata <- read_csv(here("data", "personaldata.csv")) 
 personaldata_clean <- personaldata |> clean_names()
+personaldatasummary <- personaldata_clean |> 
+group_by(school_day) |> 
+summarize(mean = mean(floors_climbed))
 
 ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
        aes(x = school_day, # x-axis should be type of day
