@@ -127,6 +127,6 @@ personaldatasummary %>%
 
 ## c.
 
-
+[The authors handled "visual clutter" well. The data:ink ratio is somewhat high. There is an adequate amount of data shown without too many visuals.]
 
 
