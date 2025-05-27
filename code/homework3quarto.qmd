@@ -129,4 +129,6 @@ personaldatasummary %>%
 
 [The authors handled "visual clutter" well. The data:ink ratio is somewhat high. There is an adequate amount of data shown without too many visuals.]
 
+## d.
 
+[The most important recommendation I have is to make the x-axis in incremental order. The current order is not logical. I would start with the lowest urban percentage and work up to the highest percentage, with the control at the end. I would also make the value colors more differentiated from each other because they are currently two shades of gray. These recommendations would make the graph more aesthetic and easier to read.]
