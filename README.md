@@ -14,10 +14,13 @@ File structure:
 ├── README.md
 ├── README.html
 ├── .gitignore
-├── code                            # code folder
+├── code     # code folder
 │   ├── homework3quarto_files               
 │   ├── homework3quarto.html
 │   ├── homework3quarto.qmd
+│   ├── homework3draft.JPEG
+│   ├── homework3sketch.JPEG
+│   ├── homework3figure.jpeg
 └── data                            # data folder
     └── personaldata.csv            # csv file containing my personal data
 ```
