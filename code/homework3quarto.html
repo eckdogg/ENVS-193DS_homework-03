@@ -90,14 +90,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#c." id="toc-c." class="nav-link" data-scroll-target="#c.">c.</a></li>
   <li><a href="#d." id="toc-d." class="nav-link" data-scroll-target="#d.">d.</a></li>
   </ul></li>
-  <li><a href="#problem-2." id="toc-problem-2." class="nav-link" data-scroll-target="#problem-2.">Problem 2.</a>
+  <li><a href="#problem-2.-affective-visualization" id="toc-problem-2.-affective-visualization" class="nav-link" data-scroll-target="#problem-2.-affective-visualization">Problem 2. Affective visualization</a>
   <ul class="collapse">
   <li><a href="#a.-1" id="toc-a.-1" class="nav-link" data-scroll-target="#a.-1">a.</a></li>
   <li><a href="#b.-1" id="toc-b.-1" class="nav-link" data-scroll-target="#b.-1">b.</a></li>
   <li><a href="#c.-1" id="toc-c.-1" class="nav-link" data-scroll-target="#c.-1">c.</a></li>
   <li><a href="#d.-1" id="toc-d.-1" class="nav-link" data-scroll-target="#d.-1">d.</a></li>
   </ul></li>
-  <li><a href="#problem-3." id="toc-problem-3." class="nav-link" data-scroll-target="#problem-3.">Problem 3.</a>
+  <li><a href="#problem-3.-statistical-critique" id="toc-problem-3.-statistical-critique" class="nav-link" data-scroll-target="#problem-3.-statistical-critique">Problem 3. Statistical critique</a>
   <ul class="collapse">
   <li><a href="#a.-2" id="toc-a.-2" class="nav-link" data-scroll-target="#a.-2">a.</a></li>
   <li><a href="#b.-2" id="toc-b.-2" class="nav-link" data-scroll-target="#b.-2">b.</a></li>
@@ -142,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="repository-link" class="level1">
 <h1>Repository Link</h1>
-<p>[https://github.com/eckdogg/ENVS-193DS_homework-03.git]</p>
+<p>https://github.com/eckdogg/ENVS-193DS_homework-03</p>
 </section>
 <section id="set-up" class="level1">
 <h1>Set up</h1>
@@ -159,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Problem 1. Personal data</h1>
 <section id="a." class="level2">
 <h2 class="anchored" data-anchor-id="a.">a.</h2>
-<p>[To summarize my data I could compare the mean number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that I will climb more floors on non school days.]</p>
+<p>To summarize my data I could compare the median number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that the median floors climbed will be higher on non school days.</p>
 </section>
 <section id="b." class="level2">
 <h2 class="anchored" data-anchor-id="b.">b.</h2>
@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>personaldata_clean <span class="ot">&lt;-</span> personaldata <span class="sc">|&gt;</span> <span class="fu">clean_names</span>() <span class="co"># cleaning up the variable names</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="ot">&lt;-</span> personaldata_clean <span class="sc">|&gt;</span> </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(school_day) <span class="sc">|&gt;</span> </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(floors_climbed)) <span class="co"># taking the mean floors climbed based on type of day</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">median =</span> <span class="fu">median</span>(floors_climbed)) <span class="co"># taking the median floors climbed based on type of day</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> personaldata_clean, <span class="co"># start with the personaldata_clean data frame</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> school_day, <span class="co"># x-axis should be type of day</span></span>
@@ -192,64 +192,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="c." class="level2">
 <h2 class="anchored" data-anchor-id="c.">c.</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> personaldata_clean, <span class="co"># start with the personaldata_clean data frame</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> school_day, <span class="co"># x-axis should be type of day</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> floors_climbed, <span class="co"># y-axis should be number of floors climbed </span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> school_day)) <span class="sc">+</span> <span class="co"># coloring by type of day</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="co"># first layer should be a boxplot</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="co"># making the points jitter horizontally</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span> <span class="co"># making sure points don't jitter vertically</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"School Day"</span>, <span class="co"># labelling the x-axis</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Floors Climbed"</span>, <span class="co"># labelling the y-axis</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Floors Climbed on School Days vs. Non School Days"</span>) <span class="sc">+</span> <span class="co"># adding caption</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"deepskyblue2"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"deeppink2"</span>))  <span class="sc">+</span> <span class="co"># manually setting colors</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="co"># removes the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="homework3quarto_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p><strong>Figure 1. Median floors climbed are higher on non school days.</strong> Boxplot showing the amount of floors climbed on school days (blue) versus non school days (pink). Points represent floors climbed on individual days. Points outside of the whiskers are potential outliers. The bolded lines within the boxes represent the medians. Boxes represent the middle 50% of the data.</p>
 </section>
 <section id="d." class="level2">
 <h2 class="anchored" data-anchor-id="d.">d.</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt) <span class="co"># Using gt package</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="sc">%&gt;%</span> <span class="co"># Using personaldatasummary data frame</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> <span class="co"># gt function for table</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>( <span class="co"># Adding a table header</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Personal Data Summary"</span> <span class="co"># Adding a title</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>( </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">where</span>(is.numeric), <span class="co"># Formatting numerical columns</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span> <span class="co"># Rounding numbers to 2 decimal places</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>( <span class="co"># Renaming columns</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">school_day =</span> <span class="st">"School Day"</span>, <span class="co"># Renaming school_day column</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="st">"Mean Floors Climbed"</span> <span class="co"># Renaming mean column</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt) <span class="co"># Using gt package</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="sc">%&gt;%</span> <span class="co"># Using personaldatasummary data frame</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> <span class="co"># gt function for table</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>( <span class="co"># Adding a table header</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Personal Data Summary"</span> <span class="co"># Adding a title</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>( </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">where</span>(is.numeric), <span class="co"># Formatting numerical columns</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span> <span class="co"># Rounding numbers to 2 decimal places</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>( <span class="co"># Renaming columns</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">school_day =</span> <span class="st">"School Day"</span>, <span class="co"># Renaming school_day column</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="st">"Median Floors Climbed"</span> <span class="co"># Renaming median column</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="zwucfpwmyw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zwucfpwmyw table {
+<div id="bziomzlpic" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bziomzlpic table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zwucfpwmyw thead, #zwucfpwmyw tbody, #zwucfpwmyw tfoot, #zwucfpwmyw tr, #zwucfpwmyw td, #zwucfpwmyw th {
+#bziomzlpic thead, #bziomzlpic tbody, #bziomzlpic tfoot, #bziomzlpic tr, #bziomzlpic td, #bziomzlpic th {
   border-style: none;
 }
 
-#zwucfpwmyw p {
+#bziomzlpic p {
   margin: 0;
   padding: 0;
 }
 
-#zwucfpwmyw .gt_table {
+#bziomzlpic .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -275,12 +255,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_caption {
+#bziomzlpic .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zwucfpwmyw .gt_title {
+#bziomzlpic .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -292,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#zwucfpwmyw .gt_subtitle {
+#bziomzlpic .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -304,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#zwucfpwmyw .gt_heading {
+#bziomzlpic .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -316,13 +296,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_bottom_border {
+#bziomzlpic .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_col_headings {
+#bziomzlpic .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -337,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_col_heading {
+#bziomzlpic .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -357,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zwucfpwmyw .gt_column_spanner_outer {
+#bziomzlpic .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -369,15 +349,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#zwucfpwmyw .gt_column_spanner_outer:first-child {
+#bziomzlpic .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zwucfpwmyw .gt_column_spanner_outer:last-child {
+#bziomzlpic .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zwucfpwmyw .gt_column_spanner {
+#bziomzlpic .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -389,11 +369,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#zwucfpwmyw .gt_spanner_row {
+#bziomzlpic .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zwucfpwmyw .gt_group_heading {
+#bziomzlpic .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -419,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#zwucfpwmyw .gt_empty_group_heading {
+#bziomzlpic .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -434,15 +414,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#zwucfpwmyw .gt_from_md > :first-child {
+#bziomzlpic .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zwucfpwmyw .gt_from_md > :last-child {
+#bziomzlpic .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zwucfpwmyw .gt_row {
+#bziomzlpic .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -461,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zwucfpwmyw .gt_stub {
+#bziomzlpic .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -474,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zwucfpwmyw .gt_stub_row_group {
+#bziomzlpic .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -488,15 +468,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#zwucfpwmyw .gt_row_group_first td {
+#bziomzlpic .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zwucfpwmyw .gt_row_group_first th {
+#bziomzlpic .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zwucfpwmyw .gt_summary_row {
+#bziomzlpic .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -506,16 +486,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zwucfpwmyw .gt_first_summary_row {
+#bziomzlpic .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_first_summary_row.thick {
+#bziomzlpic .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zwucfpwmyw .gt_last_summary_row {
+#bziomzlpic .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -525,7 +505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_grand_summary_row {
+#bziomzlpic .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -535,7 +515,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zwucfpwmyw .gt_first_grand_summary_row {
+#bziomzlpic .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -545,7 +525,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_last_grand_summary_row_top {
+#bziomzlpic .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -555,11 +535,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_striped {
+#bziomzlpic .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zwucfpwmyw .gt_table_body {
+#bziomzlpic .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -568,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_footnotes {
+#bziomzlpic .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -582,7 +562,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_footnote {
+#bziomzlpic .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -591,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zwucfpwmyw .gt_sourcenotes {
+#bziomzlpic .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -605,7 +585,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zwucfpwmyw .gt_sourcenote {
+#bziomzlpic .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -613,72 +593,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zwucfpwmyw .gt_left {
+#bziomzlpic .gt_left {
   text-align: left;
 }
 
-#zwucfpwmyw .gt_center {
+#bziomzlpic .gt_center {
   text-align: center;
 }
 
-#zwucfpwmyw .gt_right {
+#bziomzlpic .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zwucfpwmyw .gt_font_normal {
+#bziomzlpic .gt_font_normal {
   font-weight: normal;
 }
 
-#zwucfpwmyw .gt_font_bold {
+#bziomzlpic .gt_font_bold {
   font-weight: bold;
 }
 
-#zwucfpwmyw .gt_font_italic {
+#bziomzlpic .gt_font_italic {
   font-style: italic;
 }
 
-#zwucfpwmyw .gt_super {
+#bziomzlpic .gt_super {
   font-size: 65%;
 }
 
-#zwucfpwmyw .gt_footnote_marks {
+#bziomzlpic .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zwucfpwmyw .gt_asterisk {
+#bziomzlpic .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zwucfpwmyw .gt_indent_1 {
+#bziomzlpic .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zwucfpwmyw .gt_indent_2 {
+#bziomzlpic .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zwucfpwmyw .gt_indent_3 {
+#bziomzlpic .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zwucfpwmyw .gt_indent_4 {
+#bziomzlpic .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zwucfpwmyw .gt_indent_5 {
+#bziomzlpic .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zwucfpwmyw .katex-display {
+#bziomzlpic .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zwucfpwmyw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bziomzlpic div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -690,17 +670,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd gt_col_headings">
 <th id="school_day" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">School Day</th>
-<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean Floors Climbed</th>
+<th id="median" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Median Floors Climbed</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="school_day">No</td>
-<td class="gt_row gt_right" headers="mean">42.12</td>
+<td class="gt_row gt_right" headers="median">35.00</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="school_day">Yes</td>
-<td class="gt_row gt_right" headers="mean">10.70</td>
+<td class="gt_row gt_right" headers="median">10.00</td>
 </tr>
 </tbody>
 </table>
@@ -710,11 +690,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="problem-2." class="level1">
-<h1>Problem 2.</h1>
+<section id="problem-2.-affective-visualization" class="level1">
+<h1>Problem 2. Affective visualization</h1>
 <section id="a.-1" class="level2">
 <h2 class="anchored" data-anchor-id="a.-1">a.</h2>
-<p>[My personal data compared the amount of floors I climbed on school days compared to non school days. The the boxplot for non school days was significantly higher than the boxplot for school days. This represents the fact that I climb significantly more floors on non school days than school days. For an affective visualization I could represent the boxplots with something like buildings or mountains, where one is taller than the other.]</p>
+<p>My personal data compared the amount of floors I climbed on school days compared to non school days. The boxplot for non school days was significantly higher than the boxplot for school days. This represents the fact that I climb significantly more floors on non school days than school days. For an affective visualization I could represent the boxplots with something like buildings or mountains, where one is taller than the other.</p>
 </section>
 <section id="b.-1" class="level2">
 <h2 class="anchored" data-anchor-id="b.-1">b.</h2>
@@ -736,14 +716,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="d.-1" class="level2">
 <h2 class="anchored" data-anchor-id="d.-1">d.</h2>
-<p>[In this piece I am depicting the boxplots of my personal data as buildings. This is to represent the difference in floors climbed on school days compared to non school days. I was influenced by Jill Pelto’s paintings where she creates art around a graph. My work takes the form of a drawing. I created it in GoodNotes using the pencil tool.]</p>
+<ul>
+<li>In this piece I am depicting the boxplots of my personal data as buildings. This is to represent the difference in floors climbed on school days compared to non school days.</li>
+<li>I was influenced by Jill Pelto’s paintings where she creates art around a graph.</li>
+<li>My work takes the form of a drawing.</li>
+<li>I created it in GoodNotes using the pencil tool.</li>
+</ul>
 </section>
 </section>
-<section id="problem-3." class="level1">
-<h1>Problem 3.</h1>
+<section id="problem-3.-statistical-critique" class="level1">
+<h1>Problem 3. Statistical critique</h1>
 <section id="a.-2" class="level2">
 <h2 class="anchored" data-anchor-id="a.-2">a.</h2>
-<p>[The statistical tests the authors are using to address their main research question are a linear mixed effect model and t-test.]</p>
+<p>The statistical tests the authors are using to address their main research question are a linear mixed effect model and t-test.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="homework3figure.jpeg" class="img-fluid figure-img"></p>
@@ -753,15 +738,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="b.-2" class="level2">
 <h2 class="anchored" data-anchor-id="b.-2">b.</h2>
-<p>[The authors somewhat clearly visually represented their statistics in figures. The y-axis is in a logical position but the x-axis is not because it is not incremental. Standard error bars are shown on the bar graph but the underlying data is not shown.]</p>
+<p>The authors somewhat clearly visually represented their statistics in figures. The y-axis is in a logical position but the x-axis is not because it is not incremental. Standard error bars are shown on the bar graph but the underlying data is not shown.</p>
 </section>
 <section id="c.-2" class="level2">
 <h2 class="anchored" data-anchor-id="c.-2">c.</h2>
-<p>[The authors handled “visual clutter” well. The data:ink ratio is somewhat high. There is an adequate amount of data shown without too many visuals.]</p>
+<p>“Visual clutter”(unnecessary visuals) could be handled better. For example, the authors could list the y-axis numbers in increments of 10 rather than in increments of 5. The data:ink ratio is somewhat high; there is an adequate amount of data shown without too many visuals but improvements could be made.</p>
 </section>
 <section id="d.-2" class="level2">
 <h2 class="anchored" data-anchor-id="d.-2">d.</h2>
-<p>[The most important recommendation I have is to make the x-axis in incremental order. The current order is not logical. I would start with the lowest urban percentage and work up to the highest percentage, with the control at the end. I would also make the value colors more differentiated from each other because they are currently two shades of gray. These recommendations would make the graph more aesthetic and easier to read.]</p>
+<p>The most important recommendation I have is to make the x-axis in incremental order. The current order is not logical. I would start with the lowest urban percentage and work up to the highest percentage, with the control at the end. I would also make the value colors more differentiated from each other because they are currently two shades of gray. These recommendations would make the graph more aesthetic and easier to read.</p>
 </section>
 </section>
 

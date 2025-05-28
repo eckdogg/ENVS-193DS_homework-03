@@ -13,7 +13,7 @@ execute:
 
 # Repository Link
 
-[https://github.com/eckdogg/ENVS-193DS_homework-03.git]
+https://github.com/eckdogg/ENVS-193DS_homework-03
 
 
 # Set up
@@ -32,7 +32,7 @@ library("ggplot2")
 
 ## a.
 
-[To summarize my data I could compare the mean number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that I will climb more floors on non school days.]
+To summarize my data I could compare the median number of floors climbed (my response variable) on school days compared to non school days. I like to hike on the weekends so I think that the median floors climbed will be higher on non school days. 
 
 ## b.
 
@@ -41,7 +41,7 @@ personaldata <- read_csv(here("data", "personaldata.csv")) # creating an object 
 personaldata_clean <- personaldata |> clean_names() # cleaning up the variable names
 personaldatasummary <- personaldata_clean |> 
 group_by(school_day) |> 
-summarize(mean = mean(floors_climbed)) # taking the mean floors climbed based on type of day
+summarize(median = median(floors_climbed)) # taking the median floors climbed based on type of day
 
 ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
        aes(x = school_day, # x-axis should be type of day
@@ -58,20 +58,7 @@ ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
 
 ## c.
 
-```{r}
-ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
-       aes(x = school_day, # x-axis should be type of day
-           y = floors_climbed, # y-axis should be number of floors climbed 
-           color = school_day)) + # coloring by type of day
-  geom_boxplot() + # first layer should be a boxplot
-  geom_jitter(width = 0.2, # making the points jitter horizontally
-              height = 0) + # making sure points don't jitter vertically
-  labs(x = "School Day", # labelling the x-axis
-       y = "Floors Climbed", # labelling the y-axis
-       caption = "Floors Climbed on School Days vs. Non School Days") + # adding caption
-   scale_color_manual(values = c("Yes" = "deepskyblue2", "No" = "deeppink2"))  + # manually setting colors
-  theme(legend.position = "none") # removes the legend
-```
+**Figure 1. Median floors climbed are higher on non school days.** Boxplot showing the amount of floors climbed on school days (blue) versus non school days (pink). Points represent floors climbed on individual days. Points outside of the whiskers are potential outliers. The bolded lines within the boxes represent the medians. Boxes represent the middle 50% of the data.
 
 ## d.
 
@@ -89,16 +76,16 @@ personaldatasummary %>% # Using personaldatasummary data frame
   ) %>%
   cols_label( # Renaming columns
     school_day = "School Day", # Renaming school_day column
-    mean = "Mean Floors Climbed" # Renaming mean column
+    median = "Median Floors Climbed" # Renaming median column
   )
 ```
 
 
-# Problem 2.
+# Problem 2. Affective visualization
 
 ## a.
 
-[My personal data compared the amount of floors I climbed on school days compared to non school days. The the boxplot for non school days was significantly higher than the boxplot for school days. This represents the fact that I climb significantly more floors on non school days than school days. For an affective visualization I could represent the boxplots with something like buildings or mountains, where one is taller than the other.]
+My personal data compared the amount of floors I climbed on school days compared to non school days. The boxplot for non school days was significantly higher than the boxplot for school days. This represents the fact that I climb significantly more floors on non school days than school days. For an affective visualization I could represent the boxplots with something like buildings or mountains, where one is taller than the other.
 
 ## b.
 
@@ -110,25 +97,28 @@ personaldatasummary %>% # Using personaldatasummary data frame
 
 ## d.
 
-[In this piece I am depicting the boxplots of my personal data as buildings. This is to represent the difference in floors climbed on school days compared to non school days. I was influenced by Jill Pelto's paintings where she creates art around a graph. My work takes the form of a drawing. I created it in GoodNotes using the pencil tool.]
+- In this piece I am depicting the boxplots of my personal data as buildings. This is to represent the difference in floors climbed on school days compared to non school days. 
+- I was influenced by Jill Pelto's paintings where she creates art around a graph. 
+- My work takes the form of a drawing. 
+- I created it in GoodNotes using the pencil tool.
 
 
-# Problem 3.
+# Problem 3. Statistical critique
 
 ## a.
 
-[The statistical tests the authors are using to address their main research question are a linear mixed effect model and t-test.]
+The statistical tests the authors are using to address their main research question are a linear mixed effect model and t-test.
 
 ![Figure](homework3figure.jpeg)
 
 ## b.
 
-[The authors somewhat clearly visually represented their statistics in figures. The y-axis is in a logical position but the x-axis is not because it is not incremental. Standard error bars are shown on the bar graph but the underlying data is not shown.]
+The authors somewhat clearly visually represented their statistics in figures. The y-axis is in a logical position but the x-axis is not because it is not incremental. Standard error bars are shown on the bar graph but the underlying data is not shown.
 
 ## c.
 
-[The authors handled "visual clutter" well. The data:ink ratio is somewhat high. There is an adequate amount of data shown without too many visuals.]
+"Visual clutter"(unnecessary visuals) could be handled better. For example, the authors could list the y-axis numbers in increments of 10 rather than in increments of 5. The data:ink ratio is somewhat high; there is an adequate amount of data shown without too many visuals but improvements could be made.
 
 ## d.
 
-[The most important recommendation I have is to make the x-axis in incremental order. The current order is not logical. I would start with the lowest urban percentage and work up to the highest percentage, with the control at the end. I would also make the value colors more differentiated from each other because they are currently two shades of gray. These recommendations would make the graph more aesthetic and easier to read.]
+The most important recommendation I have is to make the x-axis in incremental order. The current order is not logical. I would start with the lowest urban percentage and work up to the highest percentage, with the control at the end. I would also make the value colors more differentiated from each other because they are currently two shades of gray. These recommendations would make the graph more aesthetic and easier to read.
