@@ -1,7 +1,7 @@
 ---
 title: "Homework 3"
 author: Owen Eckweiler
-date: 5/27/2025
+date: 5/28/2025
 editor: source
 format:
   html:
@@ -39,9 +39,6 @@ To summarize my data I could compare the median number of floors climbed (my res
 ```{r}
 personaldata <- read_csv(here("data", "personaldata.csv")) # creating an object called "personaldata" from my csv
 personaldata_clean <- personaldata |> clean_names() # cleaning up the variable names
-personaldatasummary <- personaldata_clean |> 
-group_by(school_day) |> 
-summarize(median = median(floors_climbed)) # taking the median floors climbed based on type of day
 
 ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
        aes(x = school_day, # x-axis should be type of day
@@ -63,7 +60,9 @@ ggplot(data = personaldata_clean, # start with the personaldata_clean data frame
 ## d.
 
 ```{r}
-library(gt) # Using gt package
+personaldatasummary <- personaldata_clean |> 
+group_by(school_day) |> 
+summarize(median = median(floors_climbed)) # taking the median floors climbed based on type of day
 
 personaldatasummary %>% # Using personaldatasummary data frame
   gt() %>% # gt function for table

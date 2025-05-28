@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Owen Eckweiler">
-<meta name="dcterms.date" content="2025-05-27">
+<meta name="dcterms.date" content="2025-05-28">
 
 <title>Homework 3</title>
 <style>
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 27, 2025</p>
+      <p class="date">May 28, 2025</p>
     </div>
   </div>
   
@@ -166,21 +166,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"personaldata.csv"</span>)) <span class="co"># creating an object called "personaldata" from my csv</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>personaldata_clean <span class="ot">&lt;-</span> personaldata <span class="sc">|&gt;</span> <span class="fu">clean_names</span>() <span class="co"># cleaning up the variable names</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="ot">&lt;-</span> personaldata_clean <span class="sc">|&gt;</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(school_day) <span class="sc">|&gt;</span> </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">median =</span> <span class="fu">median</span>(floors_climbed)) <span class="co"># taking the median floors climbed based on type of day</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> personaldata_clean, <span class="co"># start with the personaldata_clean data frame</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> school_day, <span class="co"># x-axis should be type of day</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> floors_climbed, <span class="co"># y-axis should be number of floors climbed </span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> school_day)) <span class="sc">+</span> <span class="co"># coloring by type of day</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="co"># first layer should be a boxplot</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="co"># making the points jitter horizontally</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span> <span class="co"># making sure points don't jitter vertically</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"School Day"</span>, <span class="co"># labelling the x-axis</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Floors Climbed"</span>) <span class="sc">+</span> <span class="co"># labelling the y-axis</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"deepskyblue2"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"deeppink2"</span>))  <span class="sc">+</span> <span class="co"># manually setting colors</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="co"># removes the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> personaldata_clean, <span class="co"># start with the personaldata_clean data frame</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> school_day, <span class="co"># x-axis should be type of day</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> floors_climbed, <span class="co"># y-axis should be number of floors climbed </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> school_day)) <span class="sc">+</span> <span class="co"># coloring by type of day</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="co"># first layer should be a boxplot</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="co"># making the points jitter horizontally</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span> <span class="co"># making sure points don't jitter vertically</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"School Day"</span>, <span class="co"># labelling the x-axis</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Floors Climbed"</span>) <span class="sc">+</span> <span class="co"># labelling the y-axis</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"deepskyblue2"</span>, <span class="st">"No"</span> <span class="ot">=</span> <span class="st">"deeppink2"</span>))  <span class="sc">+</span> <span class="co"># manually setting colors</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="co"># removes the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -197,39 +194,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="d." class="level2">
 <h2 class="anchored" data-anchor-id="d.">d.</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt) <span class="co"># Using gt package</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="sc">%&gt;%</span> <span class="co"># Using personaldatasummary data frame</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> <span class="co"># gt function for table</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>( <span class="co"># Adding a table header</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Personal Data Summary"</span> <span class="co"># Adding a title</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>( </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">where</span>(is.numeric), <span class="co"># Formatting numerical columns</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span> <span class="co"># Rounding numbers to 2 decimal places</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>( <span class="co"># Renaming columns</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">school_day =</span> <span class="st">"School Day"</span>, <span class="co"># Renaming school_day column</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="st">"Median Floors Climbed"</span> <span class="co"># Renaming median column</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="ot">&lt;-</span> personaldata_clean <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(school_day) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">median =</span> <span class="fu">median</span>(floors_climbed)) <span class="co"># taking the median floors climbed based on type of day</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>personaldatasummary <span class="sc">%&gt;%</span> <span class="co"># Using personaldatasummary data frame</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> <span class="co"># gt function for table</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>( <span class="co"># Adding a table header</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Personal Data Summary"</span> <span class="co"># Adding a title</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>( </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">where</span>(is.numeric), <span class="co"># Formatting numerical columns</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span> <span class="co"># Rounding numbers to 2 decimal places</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>( <span class="co"># Renaming columns</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">school_day =</span> <span class="st">"School Day"</span>, <span class="co"># Renaming school_day column</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="st">"Median Floors Climbed"</span> <span class="co"># Renaming median column</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="dcdozuegow" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dcdozuegow table {
+<div id="xjclhgkuun" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xjclhgkuun table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dcdozuegow thead, #dcdozuegow tbody, #dcdozuegow tfoot, #dcdozuegow tr, #dcdozuegow td, #dcdozuegow th {
+#xjclhgkuun thead, #xjclhgkuun tbody, #xjclhgkuun tfoot, #xjclhgkuun tr, #xjclhgkuun td, #xjclhgkuun th {
   border-style: none;
 }
 
-#dcdozuegow p {
+#xjclhgkuun p {
   margin: 0;
   padding: 0;
 }
 
-#dcdozuegow .gt_table {
+#xjclhgkuun .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -255,12 +254,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_caption {
+#xjclhgkuun .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dcdozuegow .gt_title {
+#xjclhgkuun .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -272,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#dcdozuegow .gt_subtitle {
+#xjclhgkuun .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -284,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#dcdozuegow .gt_heading {
+#xjclhgkuun .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -296,13 +295,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_bottom_border {
+#xjclhgkuun .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_col_headings {
+#xjclhgkuun .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -317,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_col_heading {
+#xjclhgkuun .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -337,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#dcdozuegow .gt_column_spanner_outer {
+#xjclhgkuun .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -349,15 +348,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#dcdozuegow .gt_column_spanner_outer:first-child {
+#xjclhgkuun .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dcdozuegow .gt_column_spanner_outer:last-child {
+#xjclhgkuun .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dcdozuegow .gt_column_spanner {
+#xjclhgkuun .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -369,11 +368,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#dcdozuegow .gt_spanner_row {
+#xjclhgkuun .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dcdozuegow .gt_group_heading {
+#xjclhgkuun .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -399,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#dcdozuegow .gt_empty_group_heading {
+#xjclhgkuun .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -414,15 +413,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#dcdozuegow .gt_from_md > :first-child {
+#xjclhgkuun .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dcdozuegow .gt_from_md > :last-child {
+#xjclhgkuun .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dcdozuegow .gt_row {
+#xjclhgkuun .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -441,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#dcdozuegow .gt_stub {
+#xjclhgkuun .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -454,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dcdozuegow .gt_stub_row_group {
+#xjclhgkuun .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -468,15 +467,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#dcdozuegow .gt_row_group_first td {
+#xjclhgkuun .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dcdozuegow .gt_row_group_first th {
+#xjclhgkuun .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dcdozuegow .gt_summary_row {
+#xjclhgkuun .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -486,16 +485,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dcdozuegow .gt_first_summary_row {
+#xjclhgkuun .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_first_summary_row.thick {
+#xjclhgkuun .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dcdozuegow .gt_last_summary_row {
+#xjclhgkuun .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -505,7 +504,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_grand_summary_row {
+#xjclhgkuun .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -515,7 +514,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dcdozuegow .gt_first_grand_summary_row {
+#xjclhgkuun .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -525,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_last_grand_summary_row_top {
+#xjclhgkuun .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -535,11 +534,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_striped {
+#xjclhgkuun .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dcdozuegow .gt_table_body {
+#xjclhgkuun .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -548,7 +547,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_footnotes {
+#xjclhgkuun .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -562,7 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_footnote {
+#xjclhgkuun .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -571,7 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dcdozuegow .gt_sourcenotes {
+#xjclhgkuun .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -585,7 +584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dcdozuegow .gt_sourcenote {
+#xjclhgkuun .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -593,72 +592,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dcdozuegow .gt_left {
+#xjclhgkuun .gt_left {
   text-align: left;
 }
 
-#dcdozuegow .gt_center {
+#xjclhgkuun .gt_center {
   text-align: center;
 }
 
-#dcdozuegow .gt_right {
+#xjclhgkuun .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dcdozuegow .gt_font_normal {
+#xjclhgkuun .gt_font_normal {
   font-weight: normal;
 }
 
-#dcdozuegow .gt_font_bold {
+#xjclhgkuun .gt_font_bold {
   font-weight: bold;
 }
 
-#dcdozuegow .gt_font_italic {
+#xjclhgkuun .gt_font_italic {
   font-style: italic;
 }
 
-#dcdozuegow .gt_super {
+#xjclhgkuun .gt_super {
   font-size: 65%;
 }
 
-#dcdozuegow .gt_footnote_marks {
+#xjclhgkuun .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dcdozuegow .gt_asterisk {
+#xjclhgkuun .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dcdozuegow .gt_indent_1 {
+#xjclhgkuun .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dcdozuegow .gt_indent_2 {
+#xjclhgkuun .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dcdozuegow .gt_indent_3 {
+#xjclhgkuun .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dcdozuegow .gt_indent_4 {
+#xjclhgkuun .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dcdozuegow .gt_indent_5 {
+#xjclhgkuun .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dcdozuegow .katex-display {
+#xjclhgkuun .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dcdozuegow div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xjclhgkuun div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
